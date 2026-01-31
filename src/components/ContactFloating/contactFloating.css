@@ -1,0 +1,60 @@
+.hero-contact-floating {
+  z-index: 9999;
+}
+
+.contact-icon-bubble {
+  /* remove fixed positioning so bubbles align in their container */
+  position: relative;
+}
+
+.contact-text-block {
+  text-align: right;
+}
+
+.contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.contact-icon-bubble {
+  /* Allow per-bubble manual offsets via CSS variables */
+  position: relative;
+  --contact-x: 0px;
+  --contact-y: 0px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4B886 0%, #b8956f 100%);
+  box-shadow: 0 4px 12px rgba(212, 184, 134, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(var(--contact-x, 0), var(--contact-y, 0));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+}
+
+.contact-icon-bubble:hover {
+  transform: translate(var(--contact-x, 0), var(--contact-y, 0)) scale(1.15);
+  box-shadow: 0 6px 20px rgba(212, 184, 134, 0.6);
+}
+
+.contact-icon-bubble:active {
+  transform: translate(var(--contact-x, 0), var(--contact-y, 0)) scale(0.95);
+}
+
+.contact-icon-bubble:focus-visible {
+  outline: 2px solid #C5A065;
+  outline-offset: 2px;
+}
+
+.contact-icon-bubble img {
+  filter: brightness(0) invert(1);
+  width: 22px;
+  height: 22px;
+}
