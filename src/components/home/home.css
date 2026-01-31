@@ -379,6 +379,38 @@
   align-items: center; /* center bubbles within the container */
 }
 
+/* Local hero contact buttons (positioned in the viewport bottom-right and gently floating) */
+.hero-local-contact {
+  position: fixed;
+  right: 28px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 9999;
+  align-items: center;
+  pointer-events: auto;
+}
+
+/* floating animation for hero-contact bubbles */
+@keyframes float-bob {
+  0% { --float: 0px; }
+  50% { --float: -6px; }
+  100% { --float: 0px; }
+}
+
+.hero-local-contact .contact-icon-bubble {
+  animation: float-bob 3s ease-in-out infinite;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-local-contact {
+    right: 16px;
+    bottom: 20px;
+    gap: 12px;
+  }
+}
+
 .hero-contact-floating .contact-icon-bubble {
   margin: 0; /* ensure consistent spacing, not overlapping */
 }
@@ -396,7 +428,8 @@
   position: relative;
   --contact-x: 0px;
   --contact-y: 0px;
-  transform: translate(var(--contact-x, 0), var(--contact-y, 0));
+  --float: 0px;
+  transform: translateY(var(--float, 0)) translate(var(--contact-x, 0), var(--contact-y, 0));
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
   border: none;
@@ -405,12 +438,12 @@
 }
 
 .contact-icon-bubble:hover {
-  transform: translate(var(--contact-x, 0), var(--contact-y, 0)) scale(1.12);
+  transform: translateY(var(--float, 0)) translate(var(--contact-x, 0), var(--contact-y, 0)) scale(1.12);
   box-shadow: 0 6px 20px rgba(212, 184, 134, 0.6);
 }
 
 .contact-icon-bubble:active {
-  transform: translate(var(--contact-x, 0), var(--contact-y, 0)) scale(0.95);
+  transform: translateY(var(--float, 0)) translate(var(--contact-x, 0), var(--contact-y, 0)) scale(0.95);
 }
 
 .contact-icon-bubble:focus-visible {

@@ -160,6 +160,17 @@ export default function Hero() {
         ))}
       </div>
 
+      {/* Local hero contact buttons (bottom-right of hero) */}
+      <div className="hero-local-contact" role="navigation" aria-label="Hero contact">
+        <a href={`mailto:office@acajuris.com`} className="contact-icon-bubble" aria-label="Send email">
+          <Image src="/images/email.svg" alt="Email" width={20} height={20} />
+        </a>
+
+        <a href={`tel:+919663812090`} className="contact-icon-bubble" aria-label="Phone">
+          <Image src="/images/phone.svg" alt="Phone" width={20} height={20} />
+        </a>
+      </div>
+
     </section >
   );
 }
